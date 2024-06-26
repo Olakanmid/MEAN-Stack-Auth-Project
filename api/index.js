@@ -1,9 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import roleRoute from './routes/role.js'
 
 const app = express();
 dotenv.config();
+
+app.use(express.json());
+app.use("/api/role", roleRoute)
+
+
+
 
 //DB connection
 const connectMongoDB = async ()=>{
@@ -15,19 +22,9 @@ const connectMongoDB = async ()=>{
     }
 }
 
-app.use('api/login', (req, res) => {
-    return res.send("<h1>Login Successful!<h1/>")
-})
 
-app.use('api/register', (req, res) => {
-    return res.send("<h1>Registration Successful!<h1/>")
-})
-
-app.use('/', (req, res)=>{
-    return res.send("<h1>Hello, Welcome to my MEAN Stack Project<h1/>")
-})
 
 app.listen(8800, ()=>{
     connectMongoDB();
     console.log("Connected to Backend!");
-})
+});
