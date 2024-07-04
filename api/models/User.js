@@ -1,14 +1,16 @@
 import mongoose, {Schema} from "mongoose";
 
+
+
 const UserSchema = mongoose.Schema(
     {
-        FirstName:{
+        firstName:{
             type: String,
             required: true
         },
         
 
-        LastName:{
+        lastName:{
             type: String,
             required: true
         },
@@ -43,18 +45,13 @@ const UserSchema = mongoose.Schema(
             default: false,
             //will add role
         },
-        roles:{
-            type: (Schema.Types.ObjectId),
-            require: true,
-            ref: "Role"
-        }
 
-        
-    
+        roles: [{ type: Schema.Types.ObjectId, ref: 'Role' }]
     },
     {
         timestamps: true
     }
 );
 
-export default mongoose.model("User", UserSchema);
+
+export default mongoose.model("User", UserSchema);  

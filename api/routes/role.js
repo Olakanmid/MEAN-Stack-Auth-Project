@@ -16,3 +16,4 @@ router.get('/getAll', getAllRoles)
 
 //Delete roles in DB
 router.delete("/deleteRole/:id", deleteRole);
+
