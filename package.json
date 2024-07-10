@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@angular/cli": "^18.0.7",
     "cookie-parser": "^1.4.6"
   }
 }
