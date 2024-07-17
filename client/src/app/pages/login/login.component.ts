@@ -31,6 +31,7 @@ login(){
   .subscribe({
    next: (res)=>{
      alert("Welcome!");
+     localStorage.setItem("user_id", res.data._id);
      this.router.navigate(['home']);
      this.loginForm.reset();
    },

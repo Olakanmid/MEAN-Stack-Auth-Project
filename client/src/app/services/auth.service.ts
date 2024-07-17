@@ -15,6 +15,14 @@ registerService(registerObj : any){
 
 loginService(loginObj : any){
   return this.http.post<any>(`${aipUrls.authServiceApi}login`, loginObj);
-
+}
+sendEmailService(email: string){
+  return this.http.post<any>(`${aipUrls.authServiceApi}send-email`, {email: email});
+}
+resetPasswordService(resetObj: any){
+  return this.http.post<any>(`${aipUrls.authServiceApi}reset-password`, resetObj);
+}
+isLoggedIn(){
+  return !!localStorage.getItem("user_id");
 }
 }

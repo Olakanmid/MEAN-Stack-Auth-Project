@@ -1,5 +1,5 @@
 import express from 'express';
-import { login, register, registerAdmin } from '../controllers/auth.controller.js';
+import { login, register, registerAdmin, resetPassword, sendEmail } from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
@@ -11,6 +11,13 @@ router.post("/register", register);
 router.post("/login", login);
 
 //Register as Admin
-router.post("/register-admin", registerAdmin)
+router.post("/register-admin", registerAdmin);
+
+//Send reset email
+
+router.post("/send-email", sendEmail);
+
+//reset password
+router.post("/reset-password", resetPassword)
 
 export default router;
