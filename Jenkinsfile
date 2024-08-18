@@ -4,9 +4,6 @@ pipeline {
     jdk 'jdk17'
     nodejs 'node16'
   }
-  environment {
-    
-  }
   stages {
     stage('clean workspace') {
       steps {
@@ -16,7 +13,17 @@ pipeline {
   }
   stage ('checkout from git') {
     steps {
-      git branch: 'main', url: ''
+      git branch: 'main', url: 'https://github.com/Olakanmid/MEAN-Stack-Auth-Project.git'
+    }
+  }
+  stage ('install dependencies') {
+    steps {
+      sh "npm install"
+    }
+  }
+  stage ('TRIVY FS SCAN') {
+    steps {
+      sh "trivy fs . > trivyfs.txt"
     }
   }
 }
