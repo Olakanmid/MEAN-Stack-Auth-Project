@@ -26,6 +26,13 @@ pipeline {
       git branch: 'main', url: 'https://github.com/Olakanmid/MEAN-Stack-Auth-Project.git'
     }
   }
+  stage ('SonarQube analysis') {
+    steps {
+      withSonarQubeEnv('SonarQube-Server') {
+        sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName
+      }
+    }
+  }
   stage ('install dependencies') {
     steps {
       sh "npm install"
