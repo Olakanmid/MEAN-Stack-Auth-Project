@@ -29,7 +29,15 @@ pipeline {
   stage ('SonarQube analysis') {
     steps {
       withSonarQubeEnv('SonarQube-Server') {
-        sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName
+        sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=MEAN-STACK-CI \
+        -Dsonar.projectkey=MEAN-STACK-CI'''
+      }
+    }
+  }
+  stage ('Quality Gate') {
+    steps {
+      script {
+        waitForQualityGate abortPipeline: false, credentialsId: 'SonarQube-Token'
       }
     }
   }
