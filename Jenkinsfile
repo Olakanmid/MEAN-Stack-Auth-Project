@@ -8,7 +8,7 @@ pipeline {
     SCANNER_HOME = tool 'sonar-scanner'
     APP_NAME = "MEAN-Stack-App"
     RELEASE = "1.0.0"
-    DOCKER_USER = "Olakanmid"
+    DOCKER_USER = "olakanmid"
     DOCKER_PASS = credentials('dockerhub') // Assuming 'dockerhub' is the ID of the Jenkins credential
     IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
